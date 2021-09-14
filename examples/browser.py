@@ -96,6 +96,7 @@ if __name__ == '__main__':
         services = list(ZeroconfServiceTypes.find(zc=zeroconf))
 
     print("\nBrowsing %d service(s), press Ctrl-C to exit...\n" % len(services))
+    print("Services:\n",services)
     browser = ServiceBrowser(zeroconf, services, handlers=[on_service_state_change])
 
     try:
