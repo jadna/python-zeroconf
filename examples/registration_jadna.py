@@ -28,13 +28,13 @@ if __name__ == '__main__':
     else:
         ip_version = IPVersion.V4Only
 
-    desc = {'path': '/~paulsm/'}
+    desc = {'path': '/~examples/'}
     print("desc: ", desc)
 
     info = ServiceInfo(
         "_http._tcp.local.",
-        "Paul's Test Web Site._http._tcp.local.",
-        addresses=[socket.inet_aton("172.21.0.198")],
+        "Jadna._http._tcp.local.",
+        addresses=[socket.inet_aton("172.21.0.114")],
         port=80,
         properties=desc,
         server="ash-2.local.",
