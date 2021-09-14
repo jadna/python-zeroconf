@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 """ Example of browsing for a service.
-
 The default is HTTP and HAP; use --find to search for all available services in the network
 """
 
@@ -9,9 +8,8 @@ import argparse
 import logging
 from time import sleep
 from typing import cast
-import socket
 
-from zeroconf import IPVersion, ServiceBrowser, ServiceStateChange, Zeroconf, ZeroconfServiceTypes, ServiceInfo
+from zeroconf import IPVersion, ServiceBrowser, ServiceStateChange, Zeroconf, ZeroconfServiceTypes
 
 HOMESHARING_SERVICE: str = "_appletv-v2._tcp.local."
 DEVICE_SERVICE: str = "_touch-able._tcp.local."
@@ -24,6 +22,8 @@ DEVICE_INFO_SERVICE: str = "_device-info._tcp.local."
 HTTP_SERVICE: str = "_http._tcp.local."
 HAP_SERVICE: str = "_hap._tcp.local."
 FIND_SERVICE: str = "_find._tcp.local."
+HTTP1_SERVICE: str = "_http._udp.local."
+HAP1_SERVICE: str = "_hap._udp.local."
 
 ALL_SERVICES = [
     HOMESHARING_SERVICE,
@@ -37,12 +37,14 @@ ALL_SERVICES = [
     HTTP_SERVICE,
     HAP_SERVICE,
     FIND_SERVICE,
+    HTTP1_SERVICE,
+    HAP1_SERVICE,
 ]
 
 def on_service_state_change(
     zeroconf: Zeroconf, service_type: str, name: str, state_change: ServiceStateChange
 ) -> None:
-    print(f"\nService {name} of type {service_type} state changed: {state_change}")
+    print(f"Service {name} of type {service_type} state changed: {state_change}")
 
     if state_change is ServiceStateChange.Added:
         info = zeroconf.get_service_info(service_type, name)
@@ -86,18 +88,7 @@ if __name__ == '__main__':
     else:
         ip_version = IPVersion.V4Only
 
-    desc = {'path': '/~examples/'}
-    info = ServiceInfo(
-        "_http._tcp.local.",
-        "Jadna._http._tcp.local.",
-        addresses=[socket.inet_aton("172.21.0.114")],
-        port=80,
-        properties=desc,
-        server="ubiq-2.local.",
-    )
-
     zeroconf = Zeroconf(ip_version=ip_version)
-    zeroconf.register_service(info)
 
     #services = ["_http._tcp.local.", "_hap._tcp.local."]
     services = ALL_SERVICES
@@ -105,7 +96,6 @@ if __name__ == '__main__':
         services = list(ZeroconfServiceTypes.find(zc=zeroconf))
 
     print("\nBrowsing %d service(s), press Ctrl-C to exit...\n" % len(services))
-    print("Services:\n",services)
     browser = ServiceBrowser(zeroconf, services, handlers=[on_service_state_change])
 
     try:
