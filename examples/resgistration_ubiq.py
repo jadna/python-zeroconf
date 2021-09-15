@@ -57,7 +57,6 @@ if __name__ == '__main__':
     serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
     hostName = socket.gethostname() 
     serverSocket.bind((HOST, PORT))
-    #print("serverSocket: ",serverSocket)
     print("Server started on " + socket.gethostname() + ": " + HOST + ":" + str(PORT) + '\n')
 
     zeroconf = Zeroconf()
