@@ -4,6 +4,7 @@ from time import sleep
 from typing import cast
 from zeroconf import IPVersion, ServiceBrowser, ServiceStateChange, Zeroconf, ZeroconfServiceTypes
 
+# _find._tcp.local. encontra todos os serviços disponiveis
 HOMESHARING_SERVICE: str = "_appletv-v2._tcp.local."
 DEVICE_SERVICE: str = "_touch-able._tcp.local."
 MEDIAREMOTE_SERVICE: str = "_mediaremotetv._tcp.local."
@@ -36,10 +37,13 @@ ALL_SERVICES = [
 
 def browser_services(zeroconf):
 
-    services = list(ZeroconfServiceTypes.find(zc=zeroconf))
+    #Busca uma lista com os serviços disponiveis
+    #services = list(ZeroconfServiceTypes.find(zc=zeroconf))
+    services = ALL_SERVICES
 
     print("Found %d service(s)" % len(services))
     print(f"Services: {services}" + "\n")
+    
     browser = ServiceBrowser(zeroconf, services, handlers=[on_service_state_change])
 
 
