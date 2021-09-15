@@ -18,6 +18,7 @@ if __name__ == '__main__':
     version_group.add_argument('--v6', action='store_true')
     version_group.add_argument('--v6-only', action='store_true')
     args = parser.parse_args()
+    print("args", args)
 
     if args.debug:
         logging.getLogger('zeroconf').setLevel(logging.DEBUG)
@@ -40,6 +41,7 @@ if __name__ == '__main__':
         server="ash-2.local.",
     )
 
+    print()
     zeroconf = Zeroconf(ip_version=ip_version)
     print("info: ", info)
     print("ip_version", ip_version)
