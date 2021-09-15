@@ -16,8 +16,7 @@ DEVICE_INFO_SERVICE: str = "_device-info._tcp.local."
 HTTP_SERVICE: str = "_http._tcp.local."
 HAP_SERVICE: str = "_hap._tcp.local."
 FIND_SERVICE: str = "_find._tcp.local."
-HTTP1_SERVICE: str = "_http._udp.local."
-HAP1_SERVICE: str = "_hap._udp.local."
+UBIQ_SERVICE: str = "_ubiq._udp.local."
 
 ALL_SERVICES = [
     HOMESHARING_SERVICE,
@@ -31,8 +30,7 @@ ALL_SERVICES = [
     HTTP_SERVICE,
     HAP_SERVICE,
     FIND_SERVICE,
-    HTTP1_SERVICE,
-    HAP1_SERVICE,
+    UBIQ_SERVICE,
 ]
 
 def browser_services(zeroconf):
@@ -43,7 +41,7 @@ def browser_services(zeroconf):
 
     print("Found %d service(s)" % len(services))
     print(f"Services: {services}" + "\n")
-    
+
     browser = ServiceBrowser(zeroconf, services, handlers=[on_service_state_change])
 
 
