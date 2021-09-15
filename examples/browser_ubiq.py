@@ -36,8 +36,8 @@ ALL_SERVICES = [
 def browser_services(zeroconf):
 
     #Busca uma lista com os serviços disponiveis
-    #services = list(ZeroconfServiceTypes.find(zc=zeroconf))
-    services = ALL_SERVICES
+    #services = ALL_SERVICES
+    services = list(ZeroconfServiceTypes.find(zc=zeroconf))
 
     print("Found %d service(s)" % len(services))
     print(f"Services: {services}" + "\n")

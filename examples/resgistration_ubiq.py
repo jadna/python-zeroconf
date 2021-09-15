@@ -31,7 +31,7 @@ def register_service(zeroconf):
             if info.properties:
                 print("  -> Properties are:")
                 for key, value in info.properties.items():
-                    print(f"   ->> {key}: {value}")
+                    print(f" {key}: {value}")
             else:
                 print("  No properties")
         else:
