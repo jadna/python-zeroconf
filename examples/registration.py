@@ -41,7 +41,6 @@ if __name__ == '__main__':
         server="ash-2.local.",
     )
 
-    print()
     zeroconf = Zeroconf(ip_version=ip_version)
     print("info: ", info)
     print("ip_version", ip_version)
