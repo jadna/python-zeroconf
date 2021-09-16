@@ -1,23 +1,17 @@
 #!/usr/bin/env python3
 """Example of perodic dump of homekit services.
-
 This example is useful when a user wants an ondemand
 list of HomeKit devices on the network.
-
 """
-
 import argparse
 import asyncio
 import logging
 from typing import Any, Optional, cast
-
-
 from zeroconf import IPVersion, ServiceBrowser, ServiceStateChange, Zeroconf
 from zeroconf.asyncio import AsyncServiceInfo, AsyncZeroconf
 
-
-HAP_TYPE = "_hap._tcp.local."
-
+#HAP_TYPE = "_hap._tcp.local."
+HAP_TYPE = "_airplay._tcp.local."
 
 async def async_watch_services(aiozc: AsyncZeroconf) -> None:
     zeroconf = aiozc.zeroconf

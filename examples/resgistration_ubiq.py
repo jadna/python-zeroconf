@@ -5,7 +5,7 @@ from zeroconf import ServiceInfo, Zeroconf
 
 
 #HOST = '***ENTER IP ADDRESS HERE***'
-HOST = '172.21.0.114'
+HOST = '192.168.0.16'
 PORT = 1024        # Port to listen on (non-privileged ports are > 1023)
 address = ""
 
