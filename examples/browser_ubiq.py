@@ -16,7 +16,7 @@ DEVICE_INFO_SERVICE: str = "_device-info._tcp.local."
 HTTP_SERVICE: str = "_http._tcp.local."
 HAP_SERVICE: str = "_hap._tcp.local."
 FIND_SERVICE: str = "_find._tcp.local."
-UBIQ_SERVICE: str = "_ubiq._udp.local."
+UBIQ_SERVICE: str = "_ubiq._tcp.local."
 
 ALL_SERVICES = [
     HOMESHARING_SERVICE,

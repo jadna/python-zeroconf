@@ -12,9 +12,9 @@ address = ""
 def register_service(zeroconf):
 
     desc = {'service': 'UbiQ Service', 'version': '1.0.0'}
-    #servico, nome servico, endereco, porta, propriedades
-    info = ServiceInfo('_ubiq._udp.local.',
-                        hostName + '._ubiq._udp.local.',
+    #tipo, nome servico, endereco, porta, propriedades
+    info = ServiceInfo('_ubiq._tcp.local.',
+                        hostName + '._ubiq._tcp.local.',
                         addresses=[socket.inet_aton(HOST)], 
                         port=PORT, 
                         properties=desc)
